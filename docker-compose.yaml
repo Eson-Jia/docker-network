@@ -1,0 +1,13 @@
+version: "3"
+services:
+  nc-server:
+    restart: always
+    image: busybox
+    ports:
+      - "8080:8080"
+    command: nc -l -v -k -p 8080
+
+  nc-client:
+    restart: always
+    image: busybox
+    command: ping www.baidu.com | nc 192.168.1.200  8080
